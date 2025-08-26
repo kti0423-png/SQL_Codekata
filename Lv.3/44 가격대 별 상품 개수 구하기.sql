@@ -20,3 +20,14 @@ from product
 ) a
 group by 1
 order by 1 asc;
+
+
+set @price = 0;
+select
+    @price := @price + 10000 as price_group,
+    (select count(1)
+    from product
+    where price between @price and @price + 9999) as products
+from product
+where @price < 80000
+order by 1 asc;
