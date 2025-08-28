@@ -31,3 +31,10 @@ select
 from product
 where @price < 80000
 order by 1 asc;
+
+select
+    floor(price/10000)*10000 as price_group,
+    count(1) as products
+from product
+group by 1
+order by 1 asc;
